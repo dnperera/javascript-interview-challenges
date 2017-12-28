@@ -1,6 +1,6 @@
 // Find given string has balanced parentheses
 
-var str = ')(';
+var str = '((ddddd((ffffff))))';
 
 var isBalanced = function(str){
 	return !str.split('')
