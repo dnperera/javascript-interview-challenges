@@ -18,3 +18,7 @@ var numbers =[5,10,15,20,25]
 console.log(dubleNumbers(numbers)); 
 
 
+
+//Another Way to Double the numbers or squre
+var doubledArray =Array.from(numbers,x=>x*2);
+console.log(doubledArray);
