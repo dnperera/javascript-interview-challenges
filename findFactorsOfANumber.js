@@ -10,4 +10,6 @@ let findFactors =(number)=>{
 	return factors
 }
 
-console.log(findFactors(6));
+//Prime Numbers - Can have only two factors , number one and number iteself
+
+console.log(findFactors(3));
