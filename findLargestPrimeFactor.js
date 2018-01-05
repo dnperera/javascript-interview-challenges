@@ -29,5 +29,11 @@ const findFactors =(number)=>{
 	}
 	return factors;
 }
-console.log(findFactors(99));
-console.log(findLargestPrimeFactor(99));
+// console.log(findFactors(99));
+// console.log(findLargestPrimeFactor(99));
+// 
+// 
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+console.log(myFish.splice(1,1,'Denith'));
+//console.log('newArray--',newArray);
+console.log('myFish',myFish);
