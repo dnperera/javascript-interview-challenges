@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascrip Throttling </title>
+	<style type="text/css" media="screen">
+		body{
+			padding: 100px;
+			background-color: rgba(158,210,9,0.5);
+		}
+		#counter {
+			padding: 20px;
+			width: 300px;
+			height: 250px;
+			margin: 100px;
+			background-color: rgb(160,215,12);
+			font-size: 75px;
+			text-align: center;
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<div id="counter">
+		<p id="counterField">0</p>
+	</div>
+	<script type="text/javascript">
+		let counter=0;
+		let counterField=document.getElementById('counterField');
+
+		function logScrolling(){
+			counter++;
+			console.log(counter);
+			counterField.innerHTML=counter;
+		}
+		let isThrotlled = false;
+		let lastEvent;
+
+		window.addEventListener("mouseover",function(event){
+			if(!isThrotlled){
+				isThrotlled=true;
+				setTimeout(()=>{
+					logScrolling()
+					isThrotlled=false;
+				},1000)
+			}
+		},false)
+		window.reques
+	</script>
+</body>
+</html>
