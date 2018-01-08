@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascrip Debouncing </title>
+	<style type="text/css" media="screen">
+		body{
+			padding: 100px;
+			background-color: rgba(158,210,9,0.5);
+		}
+		#counter {
+			padding: 20px;
+			width: 600px;
+			height: 350px;
+			margin: 100px;
+			background-color: rgb(160,215,12);
+			font-size: 20px;
+			text-align: center;
+			font-family: monospace;
+		}
+
+		input {
+		    color: #FF1440;
+		    padding: 0.95em;
+		    background: #fff;
+		    border: none;
+		    font-size: 1.1em;
+		    border: 3px solid rgba(255, 165, 0, .43);
+		    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+		    background-color: #fff;
+		    cursor: pointer;
+		    text-transform: uppercase;
+		    border-radius: .5em;
+		    width: 100%;
+		    outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="counter">
+		<div id="counterField">0</div>
+	</div>
+	<div>
+		<span class="hint">Open console and start typing</span>
+		<form action="#">
+				<input type="search" >
+		</form>
+	</div>
+		
+	</div>
+	<script type="text/javascript">
+		let counter=0;
+		let isThrotlled=false;
+		let counterField=document.getElementById('counterField');
+		/*
+			Debounce for mouse over Event
+		 */
+		const displayMousePosition=(event)=>{
+			counter++;
+			counterField.innerHTML=`Mouse X ->${event.pageX}, Y ->${event.pageY}`;
+			console.log('no of times fired ->'+counter);
+
+		}
+		let debounceTimer;
+
+		addEventListener("mouseover",(event)=>{
+			clearTimeout(debounceTimer);
+			debounceTimer= setTimeout(()=>{
+				displayMousePosition(event)
+			},2000);	
+		},false);
+
+		/*
+			Debounce for input box 
+		 */
+		let timeOut;
+
+		let searchTerm = document.querySelector('input')
+			searchTerm.addEventListener('keyup',(event)=>{
+			clearTimeout(timeOut);
+			timeOut= setTimeout(()=>{
+
+				console.log('current Time -->',new Date().getTime());
+			},2000)
+		});
+	</script>
+</body>
+</html>

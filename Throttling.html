@@ -9,11 +9,11 @@
 		}
 		#counter {
 			padding: 20px;
-			width: 300px;
-			height: 250px;
+			width: 600px;
+			height: 350px;
 			margin: 100px;
 			background-color: rgb(160,215,12);
-			font-size: 75px;
+			font-size: 20px;
 			text-align: center;
 			font-family: monospace;
 		}
@@ -21,30 +21,49 @@
 </head>
 <body>
 	<div id="counter">
-		<p id="counterField">0</p>
+		<div id="counterField">0</div>
 	</div>
+	
 	<script type="text/javascript">
 		let counter=0;
+		let isThrotlled=false;
+		let lastEvent;
 		let counterField=document.getElementById('counterField');
 
-		function logScrolling(){
-			counter++;
-			console.log(counter);
-			counterField.innerHTML=counter;
-		}
-		let isThrotlled = false;
-		let lastEvent;
+		// function logScrolling(){
+		// 	counter++;
+		// 	console.log(counter);
+		// 	counterField.innerHTML=counter;
+		// }
+		// let isThrotlled = false;
+		// let lastEvent;
 
-		window.addEventListener("mouseover",function(event){
+		// window.addEventListener("mouseover",function(event){
+		// 	if(!isThrotlled){
+		// 		isThrotlled=true;
+		// 		setTimeout(()=>{
+		// 			logScrolling()
+		// 			isThrotlled=false;
+		// 		},1000)
+		// 	}
+		// },false)
+		
+		const displayMousePosition=(event)=>{
+			counter++;
+			counterField.innerHTML=`Mouse X ->${event.pageX}, Y ->${event.pageY}`;
+		}
+
+		addEventListener("mouseover",(event)=>{
+			lastEvent=event;
 			if(!isThrotlled){
 				isThrotlled=true;
 				setTimeout(()=>{
-					logScrolling()
+					displayMousePosition(lastEvent);
 					isThrotlled=false;
-				},1000)
+				},2000);
 			}
+			
 		},false)
-		window.reques
 	</script>
 </body>
 </html>
