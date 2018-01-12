@@ -32,22 +32,20 @@ function chunk(array, size) {
 }
 //console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 5));
 //
-//
-// 21. Write a recursive version of map.
-// rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
-		var newArray=[];
-		var currentArray = array.slice();
-		
-		if(currentArray.length===0){
-			return[];
+// 23. Write a function that counts the number of times a value occurs in an object.
+var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
+// countValuesInObj(obj, 'r') // 2
+// countValuesInObj(obj, 'e') // 1
+var countValuesInObj = function(obj, value) {
+	var counter=0;
+	for(var key in obj){
+		if(obj[key]===value){
+			counter++;
 		}
-		newArray.push(callback(currentArray.shift()))
-	return newArray.concat(rMap(currentArray,callback));
+		if(typeof obj[key] ==='object'){
+			counter += countValuesInObj(obj[key],value)
+		}
+	}
+	return counter;
 };
-
-const timesTwo=(number)=>{
-	return number*2;
-}
-
-console.log(rMap([1,2,3], timesTwo));
+console.log(countValuesInObj(obj, 'e'));
