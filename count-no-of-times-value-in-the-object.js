@@ -14,7 +14,5 @@ const countValuesInObj = function(obj, value) {
 	return counter;
 }
 
-var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
-console.log(countValuesInObj(obj, 'r')); // 2
-console.log(countValuesInObj(obj, 'e')); // 1
-// 
+//
+
