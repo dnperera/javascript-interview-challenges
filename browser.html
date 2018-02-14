@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Fake Browser</title>
+</head>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<body>
+  <table>
+  	<caption>
+  		<span>Enter new URL  :</span>
+  		<input id='newURL' type=text > <button id='submit'>Go >></button>
+  		</caption> 
+  		<button id="back">Back </button>
+  		<button id="forward">Forward </button>
+  	<thead>
+  		<tr>
+  			<th>Back URL Stack</th>
+  			<th>Current URL </th>
+  			<th>Forwards URL </th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  			<td class='backURL'></td>
+  			 <td class='currentURL'></td>
+  			 <td class='forwardURL'></td>
+  		</tr>
+  	</tbody>
+  </table>
+  <script type="text/javascript" charset="utf-8" async defer>
+  	class Stack {
+  	  constructor() {
+  	    this.data = [];
+  	  }
+
+  	  push(record) {
+  	    this.data.push(record);
+  	  }
+
+  	  pop() {
+  	    return this.data.pop();
+  	  }
+
+  	  size(){
+  	  	return this.data.length;
+  	  }
+
+  	  peek(index) {
+  	    return this.data[index];
+  	  }
+  	}
+
+  var stack = new Stack();
+
+  $('#submit').on('click',function(){
+  	var newURL = $('#newURL').val();
+  	//add new url to stack
+  	stack.push(newURL);
+  	$('.currentURL').html(newURL);
+  	if(stack.size()>1){
+  		renderURLS();
+  	}
+  	
+  })
+
+
+  var renderURLS = function(){
+  	$('.backURL').empty();
+  	for( var i=0; stack.size() >i; i++ ) {
+  		$('.backURL').append(stack.data[i]+'<br>');
+  	}
+  }
+
+  </script>
+</body>
+</html>
